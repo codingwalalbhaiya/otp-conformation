@@ -1,0 +1,165 @@
+-<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<style type="text/css">
+		
+
+/* Overall container */
+#conainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to right, #ece9e6, #ffffff);
+  font-family: 'Segoe UI', sans-serif;
+  border: 2px solid #777;
+}
+
+/* Heading style */
+#heading {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+/* OTP box container */
+#otpbox {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+/* Individual OTP box */
+#otpbox input {
+  width: 45px;
+  height: 55px;
+  border: 2px solid #777;
+text-align: center;
+  border-radius: 10px;
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Button style */
+#okk {
+  padding: 12px 25px;
+  font-size: 18px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease;
+}
+
+#okk:hover {
+  background-color: #0056b3;
+}
+
+#counter {
+  width: 120px;
+  height: 50px;
+  background-color: #f8f8f8;
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 50px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  margin: 20px auto;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+	</style>
+
+</head>
+<body>
+
+	<div id="conainer">
+		<h1 id="heading"> VERIFICAION OTP </h1>
+<div id="otpbox">
+ <input></input>
+ <input></input>
+ <input></input>
+ <input></input>
+ <input></input>
+ <input></input>
+ 
+ 
+</div>
+
+<div id="counter">
+
+</div>
+
+<button id="okk"> VERIFI</button>
+
+	</div>
+<script type="text/javascript">
+	  let otpbox = document.querySelectorAll("#otpbox input")
+    let btn = document.getElementById("okk")
+    let box = "";
+
+    let input = prompt("enter your name")
+
+    let otp = '';
+
+    for (let i=0; i<6; i++){
+     otp+= Math.floor(Math.random()*10);
+
+    }
+    console.log("otp:" + otp)
+
+
+    btn.onclick =  function(){
+
+       
+        otpbox.forEach(input=>{
+           box += input.value ;
+        })
+
+  if(String(box).trim() === String(otp).trim()){
+    alert("your otp is match")
+  }else{ 
+    alert("your otp is not match")
+  }
+}
+
+
+let counter = document.getElementById("counter")
+let second = 30;
+
+// counter.innerText = `00:${second}`;
+let interval = setInterval(()=>{ 
+  second--;
+   counter.innerText = `00:${second}`;
+
+
+   if (second === 0) {
+    clearInterval(interval);
+    counter.innerText = "Expired";
+    counter.style.color = "red";
+  }else if(String(box).trim() === String(otp).trim()){
+    clearInterval(interval);
+    counter.innerText = "Done";
+    counter.style.color = "green";
+
+  }
+
+},1000)
+  
+  
+
+
+</script>
+</body>
+</html>
